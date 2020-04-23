@@ -2,6 +2,7 @@ import i18n from 'i18n';
 import path from 'path';
 import express from 'express';
 import bodyParser from 'body-parser';
+import cors from 'cors';
 import dotenv from 'dotenv';
 import cookieSession from 'cookie-session';
 import socketio from 'socket.io';
@@ -32,7 +33,7 @@ app.use(i18n.init);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.text());
-
+app.use(cors({ credentials: true, origin: true }));
 app.use(cookieSession({
   secret: process.env.cookieSession,
   cookie: { maxAge: 100000 },
