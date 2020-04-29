@@ -125,7 +125,7 @@ export default class AuthController {
       });
       const token = provideToken(id, isVerified);
       if (existingUser) {
-        return Response.login(res, 200, 'User is successfully logged in', token);
+        return res.redirect(`http://${process.env.FRONTEND_LINK}?token=${token}`);
       }
       await db.User.create({
         id: uuid(),
@@ -138,7 +138,7 @@ export default class AuthController {
         oAuthId,
         isVerified: true
       });
-      return Response.signupResponse(res, 200, 'User is successfully created', token);
+      return res.redirect(`http://${process.env.FRONTEND_LINK}?token=${token}`);
     } catch (error) {
       return Response.errorResponse(res, 500, error.message);
     }

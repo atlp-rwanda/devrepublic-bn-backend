@@ -2,6 +2,7 @@ import chai from 'chai';
 import chaiHttp from 'chai-http';
 import sinon from 'sinon';
 import dotenv from 'dotenv';
+import mock from 'node-mocks-http';
 import passport from 'passport';
 import authController from '../controllers/authController';
 
@@ -28,10 +29,9 @@ describe('GOOGLE oAuthentication tests', () => {
         provider: 'google',
       }
     };
-    const res = { status: () => ({ json: (data) => ({ body: { ...data } }) }) };
-    const results = await authController.oAuthLogin(req, res);
-    expect(results.body.status).to.equal(200);
-    expect(results.body.message).to.equal('User is successfully created');
+    const res = mock.createResponse();
+    await authController.oAuthLogin(req, res);
+    expect(res.statusCode).to.equal(302);
   });
 
   it('should login the user', async () => {
@@ -44,10 +44,9 @@ describe('GOOGLE oAuthentication tests', () => {
         provider: 'google',
       }
     };
-    const res = { status: () => ({ json: (data) => ({ body: { ...data } }) }) };
-    const results = await authController.oAuthLogin(req, res);
-    expect(results.body.status).to.equal(200);
-    expect(results.body.message).to.equal('User is successfully logged in');
+    const res = mock.createResponse();
+    await authController.oAuthLogin(req, res);
+    expect(res.statusCode).to.equal(302);
   });
 });
 
@@ -62,10 +61,9 @@ describe('FACEBOOK oAuthentication tests', () => {
         provider: 'facebook',
       }
     };
-    const res = { status: () => ({ json: (data) => ({ body: { ...data } }) }) };
-    const results = await authController.oAuthLogin(req, res);
-    expect(results.body.status).to.equal(200);
-    expect(results.body.message).to.equal('User is successfully created');
+    const res = mock.createResponse();
+    await authController.oAuthLogin(req, res);
+    expect(res.statusCode).to.equal(302);
   });
 
   it('should login the user', async () => {
@@ -78,9 +76,8 @@ describe('FACEBOOK oAuthentication tests', () => {
         provider: 'facebook',
       }
     };
-    const res = { status: () => ({ json: (data) => ({ body: { ...data } }) }) };
-    const results = await authController.oAuthLogin(req, res);
-    expect(results.body.status).to.equal(200);
-    expect(results.body.message).to.equal('User is successfully logged in');
+    const res = mock.createResponse();
+    await authController.oAuthLogin(req, res);
+    expect(res.statusCode).to.equal(302);
   });
 });
