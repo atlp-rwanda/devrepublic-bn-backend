@@ -175,5 +175,7 @@
 	"feedback is required": "feedback is required",
 	"feedback can't be longer than 300 character": "feedback can't be longer than 300 character",
 	"feedback saved successfully" : "feedback saved successfully",
-	"Most travelled destinations": "Most travelled destinations"
+	"Most travelled destinations": "Most travelled destinations",
+	"To reset your password click the button below. Note that this link is valid for only 24 hours": "To reset your password click the button below. Note that this link is valid for only 24 hours",
+	"Reset Password": "Reset Password"
 }
