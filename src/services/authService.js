@@ -13,11 +13,12 @@ export default class AuthService {
    * set the user token and send the email(servicee)
    * @param  {object} user
    * @param  {object} content
+   * @param  {string} token
    * @returns {object} send resent password Email function
    */
-  static async forgotPassword(user, content) {
-    const link = `http://${process.env.BASE_URL}/api/v1/auth/password/reset`;
-    return sendMsg(user.email, user.firstName, content, link);
+  static async forgotPassword(user, content, token) {
+    const link = `http://${process.env.FRONTEND_LINK}/password/reset?token=${token}`;
+    await sendMsg(user.email, user.firstName, content, link);
   }
 
   /**

@@ -177,12 +177,14 @@ export default class AuthController {
         return Response.errorResponse(res, 404, res.__('user not found on reset'));
       }
       const content = {
-        intro: req.__('email intro'),
-        instruction: req.__('email instruction'),
-        text: req.__('button text'),
-        signature: req.__('email signature')
+        intro: req.__('Reset Password'),
+        instruction: req.__('To reset your password click the button below. Note that this link is valid for only 24 hours'),
+        text: req.__('Reset Password'),
+        signature: req.__('signature')
       };
-      await AuthService.forgotPassword(user, content);
+
+      const token = provideToken(user.id, user.isVerified, email, user.role);
+      await AuthService.forgotPassword(user, content, token);
       return Response.success(res, 200, res.__('check your email to reset your password'));
     } catch (err) {
       return Response.errorResponse(res, 500, res.__('server error'));
@@ -202,7 +204,7 @@ export default class AuthController {
       const { user } = req;
       const { password } = req.body;
       const hashedPassword = hashPassword(password.trim());
-      AuthService.resetPassword(user.id, hashedPassword);
+      await AuthService.resetPassword(user.id, hashedPassword);
       return Response.success(res, 200, res.__('password reset successfully'));
     } catch (err) {
       return Response.errorResponse(res, 500, res.__('server error'));
