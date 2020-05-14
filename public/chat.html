@@ -18,13 +18,9 @@
     <script src="/socket.io/socket.io.js"></script>
     <script>
         const socket = io({
-            transportOptions: {
-                polling: {
-                    extraHeaders: {
-                        token: localStorage.getItem("token")
-                    }
-                }
-            }
+          query: {
+            token: localStorage.getItem("token")
+          }
         });
       socket.on('messageFromServer', (dataFromServer) => {
         console.log(dataFromServer);

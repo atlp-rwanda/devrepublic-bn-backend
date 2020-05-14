@@ -34,14 +34,10 @@
     <script>
         Notification.requestPermission();
                 const socket = io({
-            transportOptions: {
-                polling: {
-                    extraHeaders: {
+                    query: {
                         token: localStorage.getItem("token")
                     }
-                }
-            }
-        });
+                });
         const token = localStorage.getItem('token')
         socket.on( 'initialize', (data) => {
             const parsedData = JSON.parse(data);

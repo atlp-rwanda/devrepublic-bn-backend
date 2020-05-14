@@ -18,10 +18,7 @@ describe('SOCKET UNIT TESTS', () => {
 
   before((done) => {
     clientSocket = ioClient.connect(BASE_URL, {
-      transportOptions: {
-        polling:
-      { extraHeaders: { token } }
-      },
+      query: { token },
       'force new connection': true,
       forceNew: true,
     });

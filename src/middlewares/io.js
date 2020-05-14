@@ -9,7 +9,7 @@ export const connectedUsers = {};
 
 export const ioMiddleware = async (socket) => {
   try {
-    const { token } = socket.handshake.headers;
+    const { token } = socket.handshake.query;
     const decoded = verifyToken(token);
     const userInfo = await db.User.findOne({ where: { id: decoded.id } });
     if (!decoded.error) {

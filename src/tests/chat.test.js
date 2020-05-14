@@ -20,10 +20,7 @@ describe('CHAT TESTS', () => {
   const BASE_URL = `http://localhost:${server.address().port}`;
   beforeEach(() => {
     clientSocket = ioClient.connect(BASE_URL, {
-      transportOptions: {
-        polling:
-            { extraHeaders: { token: socketToken } }
-      },
+      query: { token: socketToken },
       'force new connection': true,
     });
     clientSocket.on('initialize', () => {
@@ -31,10 +28,7 @@ describe('CHAT TESTS', () => {
     });
 
     clientSocket2 = ioClient.connect(BASE_URL, {
-      transportOptions: {
-        polling:
-            { extraHeaders: { token: socketToken2 } }
-      },
+      query: { token: socketToken2 },
       'force new connection': true,
     });
     clientSocket2.on('initialize', () => {
@@ -42,10 +36,7 @@ describe('CHAT TESTS', () => {
     });
 
     clientSocket3 = ioClient.connect(BASE_URL, {
-      transportOptions: {
-        polling:
-            { extraHeaders: { token: 'safdljasdf' } }
-      },
+      query: { token: 'safdljasdf' },
       'force new connection': true,
     });
   });
