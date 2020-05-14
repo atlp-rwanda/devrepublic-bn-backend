@@ -22,6 +22,7 @@ export default class FacilityService {
       where: {
         bookedBy: user.email,
         facilityId,
+        // facilityName: facility.facilityName,
         checkin: {
           [Sequelize.Op.lte]: todayDate
         }
@@ -34,6 +35,7 @@ export default class FacilityService {
         id: uuid(),
         userId: user.id,
         facilityId,
+        facilityName: facility.facilityName,
         rating: rating * 1,
       });
       const sum = await db.Ratings.aggregate('rating', 'sum', { where: { facilityId } });

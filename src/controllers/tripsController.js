@@ -540,4 +540,26 @@ export default class requestController {
       return Response.errorResponse(res, 500, res.__('server error'));
     }
   }
+
+  /**
+   * @description this function finds and displays all booked accomodations and their ratings
+   * @param  {object} req
+   * @param  {object} res
+   * @return {object} accomodation and their ratings
+   */
+  static async accommodationsAndRatings(req, res) {
+    try {
+      const { user } = req;
+      if (user.role === 'requester') {
+        const Requests = await db.Request.findAll({ where: { email: user.email } });
+        const ratings = await db.Ratings.findAll({ where: { userId: user.id } });
+        const allBookings = await db.Bookings.findAll({ where: { bookedBy: user.email } });
+        return Response.success(res, 200, res.__('Booked Accommodations and their ratings found'),
+          { Requests, ratings, allBookings });
+      }
+      return Response.errorResponse(res, 401, res.__('you are not authorised for this operation'));
+    } catch (err) {
+      return Response.errorResponse(res, 500, res.__('server error'));
+    }
+  }
 }

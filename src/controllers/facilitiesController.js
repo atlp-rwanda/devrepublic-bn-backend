@@ -143,7 +143,7 @@ class FacilitiesController {
   static async bookFacility(req, res) {
     try {
       const {
-        checkin, checkout, roomId, facilityId, requestId
+        checkin, checkout, roomId, facilityId, facilityName, requestId
       } = req.body;
       const { user } = req;
       if (Date.parse(checkin) >= Date.parse(checkout)) {
@@ -168,7 +168,7 @@ class FacilitiesController {
       if (!room) {
         return Response.errorResponse(res, 404, res.__('this room is booked or it does not exist'));
       }
-      const facility = await findFacilityByLocation(facilityId, request.dataValues.destination);
+      const facility = await findFacilityByLocation(facilityId, facilityName, request.dataValues.destination);
       if (!facility) {
         return Response.errorResponse(res, 404, res.__('facility does not exist or is not in that location'));
       }
@@ -176,6 +176,7 @@ class FacilitiesController {
       const newBooking = await db.Bookings.create({
         id: uuid(),
         facilityId,
+        facilityName,
         roomId,
         requestId,
         bookedBy: user.email,

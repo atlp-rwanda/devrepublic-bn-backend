@@ -5,6 +5,7 @@ module.exports = (sequelize, DataTypes) => {
     roomId: DataTypes.STRING,
     requestId: DataTypes.STRING,
     facilityId: DataTypes.STRING,
+    facilityName: DataTypes.STRING,
     bookedBy: DataTypes.STRING
   }, {});
   Bookings.associate = (models) => {

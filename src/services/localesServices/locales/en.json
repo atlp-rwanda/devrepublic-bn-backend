@@ -174,8 +174,9 @@
 	"Request not found or not yours to manage": "Request not found or not yours to manage",
 	"feedback is required": "feedback is required",
 	"feedback can't be longer than 300 character": "feedback can't be longer than 300 character",
-	"feedback saved successfully" : "feedback saved successfully",
+	"feedback saved successfully": "feedback saved successfully",
 	"Most travelled destinations": "Most travelled destinations",
 	"To reset your password click the button below. Note that this link is valid for only 24 hours": "To reset your password click the button below. Note that this link is valid for only 24 hours",
-	"Reset Password": "Reset Password"
+	"Reset Password": "Reset Password",
+	"Booked Accommodations and their ratings found": "Booked Accommodations and their ratings found"
 }
