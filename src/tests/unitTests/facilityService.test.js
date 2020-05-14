@@ -53,6 +53,7 @@ describe('RATE A FACILITY SERVICE TEST', () => {
   });
   it('should return an object and updated the rating if the user has already rated', async () => {
     const facilityId = '5be72db7-5510-4a50-9f15-e23f103116d5';
+    // const facilityName = 'Marriot';
     const rating = '4';
     const result = await facilityService.rateFacility(facilityId, user, rating);
     expect(result.totalRating).to.equal(4);
