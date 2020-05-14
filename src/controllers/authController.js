@@ -118,17 +118,18 @@ export default class AuthController {
       const oAuthId = req.user.id;
       const isVerified = true;
       const password = 'null';
-
+      const newUserRole = 'requester';
+      const userId = uuid();
       const condition = { email: email || null, method: 'google' || 'facebook' };
       const existingUser = await db.User.findOne({
         where: { condition } && { oAuthId }
       });
-      const token = provideToken(id, isVerified);
       if (existingUser) {
-        return res.redirect(`http://${process.env.FRONTEND_LINK}/dashboard?token=${token}`);
+        const existingUserToken = provideToken(id, isVerified, existingUser.email, existingUser.role);
+        return res.redirect(`http://${process.env.FRONTEND_LINK}/dashboard?token=${existingUserToken}`);
       }
       await db.User.create({
-        id: uuid(),
+        id: userId,
         email,
         firstName: firstName.toLowerCase(),
         lastName: lastName.toLowerCase(),
@@ -138,7 +139,8 @@ export default class AuthController {
         oAuthId,
         isVerified: true
       });
-      return res.redirect(`http://${process.env.FRONTEND_LINK}/dashboard?token=${token}`);
+      const newUserToken = provideToken(userId, isVerified, email, newUserRole);
+      return res.redirect(`http://${process.env.FRONTEND_LINK}/dashboard?token=${newUserToken}`);
     } catch (error) {
       return Response.errorResponse(res, 500, error.message);
     }

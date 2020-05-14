@@ -34,6 +34,7 @@ export default class FacilityService {
         id: uuid(),
         userId: user.id,
         facilityId,
+        facilityName: facility.facilityName,
         rating: rating * 1,
       });
       const sum = await db.Ratings.aggregate('rating', 'sum', { where: { facilityId } });

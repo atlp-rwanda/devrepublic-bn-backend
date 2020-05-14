@@ -108,6 +108,7 @@ check('stops.*.stopDepartureDate').exists().matches(/^(19|20)\d\d[- /.](0[1-9]|1
 export const bookingRules = [
   check('roomId').exists().withMessage('roomId is required'),
   check('facilityId').exists().withMessage('facilityId is required'),
+  check('facilityName').exists().withMessage('facilityName is required'),
   check('requestId').exists().withMessage('requestId is required'),
   check('checkin').exists().withMessage('checkin is required').matches(/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])/)
     .withMessage('enter valid date with YYYY-MM-DD format'),

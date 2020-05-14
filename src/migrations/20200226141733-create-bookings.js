@@ -26,6 +26,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
+      facilityName: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
       bookedBy: {
         allowNull: false,
         type: Sequelize.STRING
