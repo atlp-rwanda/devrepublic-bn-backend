@@ -48,10 +48,7 @@ describe('EDIT TRIP TESTS', () => {
       html: 'this is stubbing message'
     });
     clientSocket = ioClient.connect(BASE_URL, {
-      transportOptions: {
-        polling:
-      { extraHeaders: { token: socketToken } }
-      },
+      query: { token: socketToken },
       'force new connection': true,
       forceNew: true,
     });
