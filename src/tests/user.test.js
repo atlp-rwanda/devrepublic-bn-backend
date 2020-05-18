@@ -253,3 +253,17 @@ describe('ASSIGNING A MANAGER TESTS', () => {
       });
   });
 });
+
+describe('OTHER USER TESTS', () => {
+  it('should return all users in the database', (done) => {
+    chai
+      .request(index)
+      .get('/api/v1/users/view')
+      .set('token', token)
+      .end((err, res) => {
+        expect(res.status).to.equal(200);
+        expect(res.body.data).to.be.an('array');
+        done();
+      });
+  });
+});

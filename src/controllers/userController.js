@@ -70,7 +70,7 @@ export default class UserController {
       }
       if (existingManager.role === 'manager' && existingUser.role !== 'manager') {
         await db.User.update(
-          { managerId: existingManager.id, managerName: `${existingManager.firstName}, ${existingManager.lastName}` },
+          { managerId: existingManager.id, managerName: `${existingManager.firstName} ${existingManager.lastName}` },
           { where: { id }, attributes: ['managerId', 'managerName'] }
         );
         return Response.success(res, 200, res.__('Manager assigned successfully.'));
@@ -125,7 +125,7 @@ export default class UserController {
     try {
       const { id } = req.payload;
       const userProfileData = await db.User.findOne({
-        where: { id }, attributes: ['id', 'firstName', 'lastName', 'email', 'isVerified', 'role', 'language', 'currency', 'department', 'gender', 'residence', 'birthdate', 'image']
+        where: { id }, attributes: ['id', 'firstName', 'lastName', 'email', 'emailNotifications', 'isVerified', 'role', 'language', 'currency', 'department', 'gender', 'residence', 'birthdate', 'image']
       });
       return Response.success(res, 200, res.__('User profile details'), userProfileData);
     } catch (error) {
@@ -159,6 +159,28 @@ export default class UserController {
       return Response.success(res, 200, res.__('Your image has been uploded successfully'), output);
     } catch (error) {
       return Response.errorResponse(res, 500, error.message);
+    }
+  }
+
+  /**
+    * @description allows admin  to view all users
+    * @static
+    * @param {Object} req
+    * @param {Object} res
+    * @returns {Object} User
+    * @memberof UserController
+  */
+  static async getUsers(req, res) {
+    try {
+      const admin = req.payload;
+      if (admin.role !== 'super administrator') {
+        return Response.errorResponse(res, 401, res.__('you are not authorised for this operation'));
+      }
+      const Users = await db.User.findAll({
+        attributes: {exclude: ['password'] }});
+      return Response.success(res, 200, res.__('Success'), Users);
+    } catch (error) {
+      return Response.errorResponse(res, 500, res.__(error.message));
     }
   }
 }
