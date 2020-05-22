@@ -250,3 +250,29 @@
  *       '500':
  *             description: server error.
  * */
+
+/**
+ * @swagger
+ * /api/v1/users/view:
+ *   get:
+ *     security:
+ *       - bearerAuth: []
+ *     tags:
+ *       - User
+ *     name: View all users
+ *     summary: Super admininstrator can view all users
+ *     produces:
+ *       - application/json
+ *     consumes:
+ *       - application/json
+ *     parameters:
+ *       - name: token
+ *         in: header
+ *     responses:
+ *       '200':
+ *             description: Success
+ *       '401':
+ *             description: you are not authorised for this operation
+ *       '500':
+ *             description: server error.
+ * */

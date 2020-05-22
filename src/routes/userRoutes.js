@@ -13,5 +13,5 @@ userRouter.patch('/edit-profile', decode, editProfileValidationRules, validation
 userRouter.get('/view-profile', decode, userController.viewProfile);
 userRouter.post('/edit-profile-image', decode, multerUploads, userController.uploadProfileImage);
 userRouter.patch('/assign/manager', decode, userController.assignManager);
-
+userRouter.get('/view', decode, userController.getUsers);
 export default userRouter;
