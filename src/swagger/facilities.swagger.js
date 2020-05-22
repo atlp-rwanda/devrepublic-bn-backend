@@ -177,6 +177,8 @@
  *           properties:
  *             facilityId:
  *               type: string
+ *             facilityName:
+ *               type: string
  *             roomId:
  *               type: string
  *             requestId:

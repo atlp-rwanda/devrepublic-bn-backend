@@ -390,3 +390,18 @@ describe('MOST TRAVELLED DESTINATION TEST', () => {
       });
   });
 });
+describe('Booked Accommodations TEST', () => {
+  it('should return Booked Accommodations for a requester', (done) => {
+    chai
+      .request(app)
+      .get('/api/v1/trips/view-accommodations-ratings')
+      .set('token', token)
+      .end((err, res) => {
+        expect(res.status).to.equal(200);
+        expect(res.body.message).to.equal('Booked Accommodations and their ratings found');
+        expect(res.body.data).to.be.an('object');
+        expect(res.body.data.requests).to.be.an('array');
+        done();
+      });
+  });
+});

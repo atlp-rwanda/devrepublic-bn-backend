@@ -36,6 +36,7 @@ describe('FACILITY BOOKING', () => {
       .send({
         roomId: 'e5e3373e-757b-4dc0-9c55-867c35eef374',
         facilityId: '5be72db7-5510-4a50-9f15-e23f103116d5',
+        facilityName: 'Marriot',
         checkin: '2018-01-11',
         checkout: '2019-10-10',
         requestId: '51e74db7-5510-4f50-9f15-e23710331ld5'
@@ -54,6 +55,7 @@ describe('FACILITY BOOKING', () => {
       .send({
         roomId: 'e5e3373e-757b-4dc0-9c55-867c35eef374',
         facilityId: '5be72db7-5510-4a50-9f15-e23f103116d5',
+        facilityName: 'Marriot',
         checkin: '2018-01-11',
         checkout: '2019-10-10',
         requestId: 'blah blah blah blah blah'
@@ -72,6 +74,7 @@ describe('FACILITY BOOKING', () => {
       .send({
         roomId: 'blah blah blah blah blah blah',
         facilityId: '5be72db7-5510-4a50-9f15-e23f103116d5',
+        facilityName: 'Marriot',
         checkin: '2018-10-11',
         checkout: '2019-01-10',
         requestId: '51e74db7-5510-4f50-9f15-e23710331ld5'
@@ -91,6 +94,7 @@ describe('FACILITY BOOKING', () => {
       .send({
         roomId: 'e5e3373e-757b-4dc0-9c55-867c35eef374',
         facilityId: '5be72db7-5510-4a50-9f15-e23f103116d5',
+        facilityName: 'Marriot',
         checkin: '2019-11-11',
         checkout: '2019-01-10',
         requestId: '51e74db7-5510-4f50-9f15-e23710331ld5'

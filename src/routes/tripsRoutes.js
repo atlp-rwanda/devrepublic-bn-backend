@@ -25,4 +25,6 @@ router.get('/stats', protectRoute.verifyUser, tripsController.TripStats);
 router.get('/:requestId/view', protectRoute.verifyUser, tripsController.viewRequest);
 router.get('/view', protectRoute.verifyUser, tripsController.viewAllRequests);
 router.get('/most-travelled', protectRoute.verifyUser, tripsController.mostTravelledDestinations);
+router.get('/view-accommodations-ratings', protectRoute.verifyUser, tripsController.accommodationsAndRatings);
+
 export default router;

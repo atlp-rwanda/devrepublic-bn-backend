@@ -276,6 +276,8 @@ describe('RATE A FACILITY TESTS', () => {
         role: 'requester'
       })
       .end((err, res) => {
+        res.body.data.status = 'aprpoved';
+        res.body.data.confirm = true;
         userRequest = res.body.data.id;
         expect(res.status).to.equal(201);
         done();
@@ -289,6 +291,7 @@ describe('RATE A FACILITY TESTS', () => {
       .send({
         facilityId,
         roomId,
+        facilityName: 'serenas',
         requestId: userRequest,
         checkin: '2019-04-15',
         checkout: '2019-05-14',
