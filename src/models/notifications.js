@@ -3,6 +3,7 @@ module.exports = (sequelize, DataTypes) => {
     status: DataTypes.ENUM('read, unread'),
     content: DataTypes.STRING,
     receiverId: DataTypes.STRING,
+    requestId: DataTypes.STRING,
     receiverEmail: DataTypes.STRING,
     link: DataTypes.STRING
   }, {});

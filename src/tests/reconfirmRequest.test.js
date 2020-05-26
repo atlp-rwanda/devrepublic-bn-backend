@@ -139,6 +139,7 @@ describe('re-confirm request tests', () => {
       expect(JSON.parse(data)).to.be.an('object');
       expect(JSON.parse(data).receiverId).to.equal('79660e6f-4b7d-4g21-81re-74f54jk91c8a');
       expect(JSON.parse(data).content).to.equal('the trip to gisenyi on 2020-12-01 that you requested has been rejected');
+      expect(JSON.parse(data).requestId).to.equal('t1e74db7-h610-4f50-9f45-e2371j331ld9');
     });
   });
 });

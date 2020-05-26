@@ -30,8 +30,10 @@ describe('SOCKET UNIT TESTS', () => {
   });
   it('should communicate and notify', (done) => {
     clientSocket.on('initialize', (data) => {
+      const containRequestId = JSON.parse(data).notif.filter((el) => el.requestId);
       expect(JSON.parse(data).notif).to.be.an('array');
       expect(JSON.parse(data).notif.length).to.equal(3);
+      expect(containRequestId.length).to.equal(3);
       done();
     });
   });
