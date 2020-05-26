@@ -23,6 +23,10 @@ module.exports = {
           as: 'id'
       },
       },
+      requestId: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
       receiverEmail: {
         type: Sequelize.STRING,
         allowNull: false

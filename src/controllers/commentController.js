@@ -31,7 +31,7 @@ export default class CommentController {
         id: uuid()
       });
       if (user.role === 'manager') {
-        const notifyUser = await notifService.createNotif(req.request.userId, req.request.email, 'your manager posted a comment', '#');
+        const notifyUser = await notifService.createNotif(req.request.userId, req.request.email, 'your manager posted a comment', '#', requestId);
         const content = {
           intro: req.__(notifyUser.content),
           instruction: req.__('Your Manager commented: %s', newComment.comment),
@@ -40,7 +40,7 @@ export default class CommentController {
         };
         await SendNotification.sendNotif(notifyUser, req, content);
       } else {
-        const notifyUser = await notifService.createNotif(req.request.managerId, email, 'your requester posted a comment', '#');
+        const notifyUser = await notifService.createNotif(req.request.managerId, email, 'your requester posted a comment', '#', requestId);
         const content = {
           intro: req.__(notifyUser.content),
           instruction: req.__('Your requester commented: %s', newComment.comment),

@@ -60,7 +60,7 @@ export default class requestController {
         newRequest.managerId,
         managerInfo.email,
         `A trip request to ${newRequest.destination} on ${newRequest.departureDate} has been requested by ${user.firstName}, ${user.lastName}, it is waiting your approval.`,
-        '#'
+        '#', newRequest.id,
       );
       const content = {
         intro: `${req.__('A trip request to')} ${newRequest.destination} ${req.__('on')} ${newRequest.departureDate} ${req.__('has been requested by')} ${newRequest.profileData[0].passportName}`,
@@ -128,7 +128,7 @@ export default class requestController {
         newRequest.managerId,
         managerInfo.email,
         `A trip request to ${newRequest.destination} on ${newRequest.departureDate} has been requested by ${user.firstName}, ${user.lastName}, it is waiting your approval.`,
-        '#'
+        '#', newRequest.id,
       );
       const content = {
         intro: `${req.__('A trip request to')} ${newRequest.destination} ${req.__('on')} ${newRequest.departureDate} ${req.__('has been requested by')} ${newRequest.profileData[0].passportName}`,
@@ -178,7 +178,7 @@ export default class requestController {
         }],
       }, { where: { id }, returning: true, plain: true });
       const manager = await db.User.findOne({ where: { id: updatedRequest[1].managerId } });
-      const notification = await notifService.createNotif(manager.id, manager.email, `Request with id ${updatedRequest[1].id} has been edited`, '#');
+      const notification = await notifService.createNotif(manager.id, manager.email, `Request with id ${updatedRequest[1].id} has been edited`, '#', existingRequest.id);
       const content = {
         intro: req.__('request with id %s has been edited', updatedRequest[1].id),
         instruction: req.__('To view this edited request click below'),
@@ -279,7 +279,7 @@ export default class requestController {
         newMulticityRequest.managerId,
         managerInfo.email,
         `A trip request to ${newMulticityRequest.destination} on ${newMulticityRequest.departureDate} has been requested by ${user.firstName}, ${user.lastName}, it is waiting your approval.`,
-        '#'
+        '#', newMulticityRequest.id,
       );
       const content = {
         intro: `${req.__('A trip request to')} ${newMulticityRequest.destination} ${req.__('on')} ${newMulticityRequest.departureDate} ${req.__('has been requested by')} ${newMulticityRequest.profileData[0].passportName}`,
@@ -324,8 +324,7 @@ export default class requestController {
       }
       const updatedRequest = await request.update({ confirm: true });
 
-      const result = await notifService.createNotif(updatedRequest.userId, updatedRequest.email, `the trip to ${updatedRequest.destination} on ${updatedRequest.departureDate} that you requested has been ${updatedRequest.status}`, '#');
-
+      const result = await notifService.createNotif(updatedRequest.userId, updatedRequest.email, `the trip to ${updatedRequest.destination} on ${updatedRequest.departureDate} that you requested has been ${updatedRequest.status}`, '#', request.id);
       const content = {
         intro: `${req.__('the trip to')} ${updatedRequest.destination} ${req.__('on')} ${request.departureDate} ${req.__('that you requested has been')} ${req.__(request.status)}`,
         instruction: req.__('To view this %s request you made click below', req.__(request.status)),

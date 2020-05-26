@@ -112,6 +112,7 @@ describe('COMMENTS TESTS', () => {
     clientSocket.on('notification', (msg) => {
       expect(JSON.parse(msg)).to.be.an('object');
       expect(JSON.parse(msg).receiverId).to.equal('79660e6f-4b7d-4g21-81re-74f54e9e1c8a');
+      expect(JSON.parse(msg).requestId).to.equal(requestId);
       expect(JSON.parse(msg).status).to.equal('unread');
       expect(JSON.parse(msg).content).to.equal('your manager posted a comment');
     });

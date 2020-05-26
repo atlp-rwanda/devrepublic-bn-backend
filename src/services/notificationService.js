@@ -14,13 +14,14 @@ export default class Notifications {
    * @param  {String} content
    * @return {Object} notification
    */
-  static async createNotif(...[receiverId, receiverEmail, content, link]) {
+  static async createNotif(...[receiverId, receiverEmail, content, link, requestId]) {
     const newNotif = await db.Notifications.create({
       id: uuid(),
       receiverEmail,
       receiverId,
       content,
-      link
+      link,
+      requestId
     });
     return newNotif;
   }

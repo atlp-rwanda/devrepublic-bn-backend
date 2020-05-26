@@ -85,6 +85,7 @@ describe('EDIT TRIP TESTS', () => {
     clientSocket.on('notification', (msg) => {
       expect(JSON.parse(msg)).to.be.an('object');
       expect(JSON.parse(msg).receiverId).to.equal('0119b84a-99a4-41c0-8a0e-6e0b6c385165');
+      expect(JSON.parse(msg).requestId).to.equal(openRequest.id);
       expect(JSON.parse(msg).status).to.equal('unread');
     });
   });
