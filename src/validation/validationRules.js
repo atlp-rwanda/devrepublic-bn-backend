@@ -22,8 +22,8 @@ export const changeRoles = [
     .isEmail()
     .withMessage('The email is required'),
   check('role').trim().exists().withMessage('The passport name is required')
-    .matches(/\b(super administrator|travel administrator|manager|travel team member|requester)\b/)
-    .withMessage('The allowable roles are manager, travel team member, requester, travel administrator, super administrator')
+    .matches(/\b(super administrator|travel administrator|manager|travel team member|requester|supplier)\b/)
+    .withMessage('The allowable roles are manager, travel team member, requester, supplier, travel administrator, super administrator')
 ];
 export const editProfileValidationRules = [
   check('gender').isIn(['Male', 'Female']).withMessage('Gender must either be Male or Female'),
@@ -53,8 +53,8 @@ export const requestRules = [
     .withMessage('Passport name must be atleast 4 characters'),
   check('role').exists().withMessage('The role is required')
     .trim()
-    .matches(/\b(super administrator|travel administrator|manager|travel team member|requester)\b/)
-    .withMessage('The allowable roles are manager, travel team member, requester, travel administrator, super administrator'),
+    .matches(/\b(super administrator|travel administrator|manager|travel team member|requester|supplier)\b/)
+    .withMessage('The allowable roles are manager, travel team member, requester, supplier, travel administrator, super administrator'),
   check('gender').exists().withMessage('Gender is required').isIn(['Male', 'Female'])
     .withMessage('Gender must either be Male or Female'),
 ];
@@ -76,7 +76,7 @@ check('passportName').exists().withMessage('The passport name is required')
 check('role').exists().withMessage('The role is required')
   .trim()
   .matches(/\b(super administrator|travel administrator|manager|travel team member|requester|supplier)\b/)
-  .withMessage('The allowable roles are manager, travel team member, requester, travel administrator, super administrator'),
+  .withMessage('The allowable roles are manager, travel team member, requester, supplier, travel administrator, super administrator'),
 check('gender').exists().withMessage('Gender is required').isIn(['Male', 'Female'])
   .withMessage('Gender must either be Male or Female'),
 ];
