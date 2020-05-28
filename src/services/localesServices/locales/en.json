@@ -29,7 +29,7 @@
 	"enter valid date with YYYY-MM-DD format": "enter valid date with YYYY-MM-DD format",
 	"Passport name should be only characters": "Passport name should be only characters",
 	"Passport name must be atleast 4 characters": "Passport name must be atleast 4 characters",
-	"The allowable roles are manager, travel team member, requester, travel administrator, super administrator": "The allowable roles are manager, travel team member, requester, travel administrator, super administrator",
+	"The allowable roles are manager, travel team member, requester, supplier, travel administrator, super administrator": "The allowable roles are manager, travel team member, requester, supplier, travel administrator, super administrator",
 	"The passport name is required": "The passport name is required",
 	"The role is required": "The role is required",
 	"Gender is required": "Gender is required",

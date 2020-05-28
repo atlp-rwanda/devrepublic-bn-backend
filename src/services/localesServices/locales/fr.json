@@ -16,7 +16,7 @@
 	"requester": "demandeur",
 	"travel administrator": "administrateur de voyages",
 	"super administrator": "super administrateur",
-	"the acceptable roles are manager, travel team member, requester, travel administrator, super administrator": "les rôles acceptables sont gestionnaire, membre de l'équipe de voyage, demandeur, administrateur de voyage, super administrateur",
+	"the acceptable roles are manager, travel team member, requester, supplier, travel administrator, super administrator": "les rôles acceptables sont gestionnaire, membre de l'équipe de voyage, demandeur, fournisseur, administrateur de voyage, super administrateur",
 	"The user is already a %s": "L'utilisateur est déjà un %s",
 	"User is successfully logged in": "L'utilisateur est connecté avec succès",
 	"Incorrect email or password": "email ou mot de passe incorrect",
