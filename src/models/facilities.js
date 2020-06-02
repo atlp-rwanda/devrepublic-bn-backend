@@ -16,8 +16,8 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Facilities.associate = (models) => {
     Facilities.hasMany(models.Rooms, {
-      foreignKey: 'id',
-      as: 'facilityId',
+      foreignKey: 'facilityId',
+      as: 'rooms',
       onDelete: 'cascade',
       onUpdate: 'cascade'
     });
