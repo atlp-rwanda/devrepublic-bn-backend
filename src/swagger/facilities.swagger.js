@@ -1,3 +1,24 @@
+
+/**
+ * @swagger
+ * /api/v1/facilities:
+ *   get:
+ *     security:
+ *       - bearerAuth: []
+ *     tags:
+ *       - Facilities
+ *     name: getFacilities
+ *     summary: allows user to see all facility
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - name: token
+ *         in: header
+ *     responses:
+ *       '200':
+ *             description: Facilities retrieved successfully.
+ * */
+
 /**
  * @swagger
  * /api/v1/facilities:

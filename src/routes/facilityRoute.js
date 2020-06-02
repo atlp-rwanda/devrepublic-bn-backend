@@ -21,5 +21,6 @@ router.patch('/unlike', protectRoute.verifyUser, protectRoute.verifyFacility, pr
 router.post('/book', protectRoute.verifyUser, protectRoute.verifyRequester, bookingRules, validationResult, FacilitiesController.bookFacility);
 router.patch('/rate/:facilityId', protectRoute.verifyUser, rateQueryRules, validationResult, FacilitiesController.rateFacility);
 router.post('/feedback/:facilityId', protectRoute.verifyUser, protectRoute.verifyRequester, feedbackRules, validationResult, FacilitiesController.facilityFeedback);
+router.get('/', protectRoute.verifyUser, FacilitiesController.getAllFacilities);
 
 export default router;

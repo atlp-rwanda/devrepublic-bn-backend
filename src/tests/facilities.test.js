@@ -444,3 +444,32 @@ describe('FACILITY FEEDBACK TESTS', () => {
       });
   });
 });
+
+describe('get all facilities', () => {
+  let requesterToken;
+  it('should login the travel admin and return the token', (done) => {
+    chai
+      .request(index)
+      .post('/api/v1/auth/login')
+      .send({
+        email: 'jdev@andela.com',
+        password: 'Bien@BAR789'
+      })
+      .end((err, res) => {
+        requesterToken = res.body.data;
+        done();
+      });
+  });
+  it('should get all facilities', (done) => {
+    chai
+      .request(index)
+      .get('/api/v1/facilities')
+      .set('token', requesterToken)
+      .end((err, res) => {
+        expect(res.status).to.equal(200);
+        expect(res.body.message).to.equal('Facilities retrieved successfully');
+        expect(res.body.data).to.be.an('array');
+        done();
+      });
+  });
+});
