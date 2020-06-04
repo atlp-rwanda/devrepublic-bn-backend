@@ -21,6 +21,12 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       },
+      image: {
+        type: Sequelize.STRING
+      },
+      email: {
+        type: Sequelize.STRING
+      },
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
