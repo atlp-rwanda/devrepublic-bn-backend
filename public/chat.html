@@ -27,24 +27,13 @@
         socket.emit('messageToServer', {data: 'this is comming from chat.html'})
       })
 
-      socket.on('onlineUsers', (usernames) => {
-        const usernamesParsed = JSON.parse(usernames)
-        usernamesParsed.map((username) => {
-          let usersContainer = document.querySelector('.users');
-          let node = document.createElement('li');
-          node.innerHTML = `${username}`
-          usersContainer.appendChild(node)
-        })
-      });
-      
-      socket.on('newUser', (usernames) => {
-        const currentUsers = JSON.parse(usernames)
-        const newUser = currentUsers[currentUsers.length - 1];
+      socket.on('onlineUsers', (users) => {
+        const usernamesParsed = JSON.parse(users)
         let usersContainer = document.querySelector('.users');
         usersContainer.innerHTML = '';
-        currentUsers.map((username) => {
+        usernamesParsed.map((user) => {
           let node = document.createElement('li');
-          node.innerHTML = `${username}`
+          node.innerHTML = `${user.firstName} ${user.lastName}`
           usersContainer.appendChild(node)
         })
       });
